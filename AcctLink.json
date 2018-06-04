@@ -1,1253 +1,1062 @@
 {
-  "swagger": "2.0",
-  "info": {
-    "version": "0.1",
-    "description": "EPG000101 取得認證章\nEPG010101 存款帳號驗證\nEPG030101 帳號付款交易\nEPG030201 帳號退款交易\nEPG030301 自行帳號提領交易\nEPG030401 交易結果查詢",
-    "title": "電子支付閘道(AcctLink) APIs",
-    "contact": {},
-    "license": {
-      "name": "電子支付閘道"
-    }
-  },
-  "host": "61.218.15.236",
-  "basePath": "/epgw",
-  "tags": [
-    {
-      "name": "Verify Deposit Account 取得認證章",
-      "description": "EPG 000101 Controller"
-    },
-    {
-      "name": "Verify Deposit Account 存款帳號驗證",
-      "description": "EPG 010101 Controller"
-    },
-    {
-      "name": "Binding Deposit Account 約定自行帳號連結",
-      "description": "EPG 020101 Controller"
-    },
-    {
-      "name": "Get Binded Deposit Accounts 查詢帳號連結",
-      "description": "EPG 020301 Controller"
-    },
-    {
-      "name": "UnBinding Deposit Account 取消帳號連結",
-      "description": "EPG 020201 Controller"
-    },
-    {
-      "name": "Payment Transaction帳號付款交易",
-      "description": "EPG 030101 Controller"
-    },
-    {
-      "name": "Get Transaction Result交易結果查詢",
-      "description": "EPG 030401 Controller"
-    },
-    {
-      "name": "Refund Transaction帳號退款交易",
-      "description": "EPG 030201 Controller"
-    },
-    {
-      "name": "Withdrawal Transcation自行帳號提領交易",
-      "description": "EPG 030301 Controller"
-    },
-    {
-      "name": "Download Reconciliation file 對帳檔下載",
-      "description": "EPG 040101 Controller"
-    }
-  ],
-  "paths": {
-    "/EPG00/01/EPG000101": {
-      "post": {
-        "tags": [
-          "Verify Deposit Account 取得認證章"
-        ],
-        "summary": "getAccessToken 取得認證章",
-        "description": "Return AccessToken",
-        "operationId": "getAccessTokenUsingPOST",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "requestBody",
-            "description": "requestBody",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/request«EPG000101RequestBody»"
-            }
+  "swagger" : "2.0",
+  "host" : "61.218.15.236",
+  "basePath" : "/epgw",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/EPG02/01/EPG020101" : {
+      "post" : {
+        "description" : "約定自行帳號連結",
+        "operationId" : "bindingAcctUsingPOST",
+        "summary" : "bindingAcct",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "description" : "bindingAcct",
+          "required" : true,
+          "in" : "body",
+          "name" : "bindingAcct",
+          "schema" : {
+            "$ref" : "#/definitions/request«EPG020101RequestBody»"
           }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/response«EPG000101ResponseBody»"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/response«EPG020101ResponseBody»"
             }
           }
         }
       }
     },
-    "/EPG01/01/EPG010101": {
-      "post": {
-        "tags": [
-          "Verify Deposit Account 存款帳號驗證"
-        ],
-        "summary": "verifyAccout",
-        "description": "驗證存款帳號，請輸入統一證號,銀行代碼及存款帳號",
-        "operationId": "verifyAccoutUsingPOST",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "verifyAccout",
-            "description": "verifyAccout",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/request«EPG010101RequestBody»"
-            }
+    "/EPG03/03/EPG030301" : {
+      "post" : {
+        "description" : "1. 銀行帳號資料可由EPG020301取得 \n2. 參考 6.2 API呼叫流程",
+        "operationId" : "refundTransactionUsingPOST_1",
+        "summary" : "Withdrawal Transcation自行帳號提領交易",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "description" : "withdrawalInfo",
+          "required" : true,
+          "in" : "body",
+          "name" : "withdrawalInfo",
+          "schema" : {
+            "$ref" : "#/definitions/request«EPG030301RequestBody»"
           }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK,",
-            "schema": {
-              "$ref": "#/definitions/response«EPG010101ResponseBody»"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/response«EPG030301ResponseBody»"
             }
           }
         }
       }
     },
-    "/EPG02/01/EPG020101": {
-      "post": {
-        "tags": [
-          "Binding Deposit Account 約定自行帳號連結"
-        ],
-        "summary": "bindingAcct",
-        "description": "約定自行帳號連結",
-        "operationId": "bindingAcctUsingPOST",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "bindingAcct",
-            "description": "bindingAcct",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/request«EPG020101RequestBody»"
-            }
+    "/EPG02/02/EPG020201" : {
+      "post" : {
+        "description" : "取消帳號連結，請輸入銀行代碼及存款帳號",
+        "operationId" : "unBindingAccountUsingPOST",
+        "summary" : "unBindingAccount",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "description" : "unBindingAccout",
+          "required" : true,
+          "in" : "body",
+          "name" : "unBindingAccout",
+          "schema" : {
+            "$ref" : "#/definitions/request«EPG020201RequestBody»"
           }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/response«EPG020101ResponseBody»"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/response«EPG020201ResponseBody»"
             }
           }
         }
       }
     },
-    "/EPG02/02/EPG020201": {
-      "post": {
-        "tags": [
-          "UnBinding Deposit Account 取消帳號連結"
-        ],
-        "summary": "unBindingAccount",
-        "description": "取消帳號連結，請輸入銀行代碼及存款帳號",
-        "operationId": "unBindingAccountUsingPOST",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "unBindingAccout",
-            "description": "unBindingAccout",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/request«EPG020201RequestBody»"
-            }
+    "/EPG01/01/EPG010101" : {
+      "post" : {
+        "description" : "驗證存款帳號，請輸入統一證號,銀行代碼及存款帳號",
+        "operationId" : "verifyAccoutUsingPOST",
+        "summary" : "verifyAccout",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "description" : "verifyAccout",
+          "required" : true,
+          "in" : "body",
+          "name" : "verifyAccout",
+          "schema" : {
+            "$ref" : "#/definitions/request«EPG010101RequestBody»"
           }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/response«EPG020201ResponseBody»"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK,",
+            "schema" : {
+              "$ref" : "#/definitions/response«EPG010101ResponseBody»"
             }
           }
         }
       }
     },
-    "/EPG02/03/EPG020301": {
-      "post": {
-        "tags": [
-          "Get Binded Deposit Accounts 查詢帳號連結"
-        ],
-        "summary": "getBindedAcct",
-        "description": "查詢帳號連結，請輸入統一證號",
-        "operationId": "getBindedAcctUsingPOST",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "getBindedAcct",
-            "description": "getBindedAcct",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/request«EPG020301RequestBody»"
-            }
+    "/EPG03/04/EPG030401" : {
+      "post" : {
+        "description" : "1. 需帶入原始交易序號(txSN)，可查詢交易類型：\n1.1. 付款(P)\n1.2. 儲值(RS)\n1.3. 退款(RF)\n1.4. 提領(W)\n1.5. 約定帳號(BA)\n1.6. 取消帳號連結(UBA)\n2. 查無資料時，Response.header.returnCode將取得M0001\n3. 請參考 6.2 API呼叫流程\n",
+        "operationId" : "getTransactionResultUsingPOST",
+        "summary" : "Get Transaction Result交易結果查詢",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "description" : "transactionInfo",
+          "required" : true,
+          "in" : "body",
+          "name" : "transactionInfo",
+          "schema" : {
+            "$ref" : "#/definitions/request«EPG030401RequestBody»"
           }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/response«EPG020301ResponseBody»"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/response«EPG030401ResponseBody»"
             }
           }
         }
       }
     },
-    "/EPG03/01/EPG030101": {
-      "post": {
-        "tags": [
-          "Payment Transaction帳號付款交易"
-        ],
-        "summary": "Payment Transaction帳號付款交易",
-        "description": "1. 銀行帳號資料可透過EPG020301取得 \n2. 請參考6.2 API呼叫流程",
-        "operationId": "paymentTransactionUsingPOST",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "paymentInfo",
-            "description": "paymentInfo",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/request«EPG030101RequestBody»"
-            }
+    "/EPG03/02/EPG030201" : {
+      "post" : {
+        "description" : "1. 銀行帳號資料可由EPG020301取得 \n2. 因可接受多筆退款，每筆退款結果將於Response.body.refundList中依照各原始交易序號逐筆呈現參考 \n3. 6.2 API呼叫流程",
+        "operationId" : "refundTransactionUsingPOST",
+        "summary" : "Refund Transaction帳號退款交易",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "description" : "refundInfo",
+          "required" : true,
+          "in" : "body",
+          "name" : "refundInfo",
+          "schema" : {
+            "$ref" : "#/definitions/request«EPG030201RequestBody»"
           }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/response«EPG030101ResponseBody»"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/response«EPG030201ResponseBody»"
             }
           }
         }
       }
     },
-    "/EPG03/02/EPG030201": {
-      "post": {
-        "tags": [
-          "Refund Transaction帳號退款交易"
-        ],
-        "summary": "Refund Transaction帳號退款交易",
-        "description": "1. 銀行帳號資料可由EPG020301取得 \n2. 因可接受多筆退款，每筆退款結果將於Response.body.refundList中依照各原始交易序號逐筆呈現參考 \n3. 6.2 API呼叫流程",
-        "operationId": "refundTransactionUsingPOST",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "refundInfo",
-            "description": "refundInfo",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/request«EPG030201RequestBody»"
-            }
+    "/EPG04/01/EPG040101" : {
+      "post" : {
+        "description" : "Download Reconciliation file",
+        "operationId" : "downloadDailyReportUsingPOST",
+        "summary" : "Download Reconciliation file",
+        "consumes" : [ "application/json;charset=UTF-8" ],
+        "produces" : [ "application/octet-stream", "application/json;charset=UTF-8" ],
+        "parameters" : [ {
+          "description" : "request",
+          "required" : true,
+          "in" : "body",
+          "name" : "request",
+          "schema" : {
+            "$ref" : "#/definitions/request«EPG040101RequestBody»"
           }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/response«EPG030201ResponseBody»"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/Resource"
             }
           }
         }
       }
     },
-    "/EPG03/03/EPG030301": {
-      "post": {
-        "tags": [
-          "Withdrawal Transcation自行帳號提領交易"
-        ],
-        "summary": "Withdrawal Transcation自行帳號提領交易",
-        "description": "1. 銀行帳號資料可由EPG020301取得 \n2. 參考 6.2 API呼叫流程",
-        "operationId": "refundTransactionUsingPOST_1",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "withdrawalInfo",
-            "description": "withdrawalInfo",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/request«EPG030301RequestBody»"
-            }
+    "/EPG00/01/EPG000101" : {
+      "post" : {
+        "description" : "Return AccessToken",
+        "operationId" : "getAccessTokenUsingPOST",
+        "summary" : "getAccessToken 取得認證章",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "description" : "requestBody",
+          "required" : true,
+          "in" : "body",
+          "name" : "requestBody",
+          "schema" : {
+            "$ref" : "#/definitions/request«EPG000101RequestBody»"
           }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/response«EPG030301ResponseBody»"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/response«EPG000101ResponseBody»"
             }
           }
         }
       }
     },
-    "/EPG03/04/EPG030401": {
-      "post": {
-        "tags": [
-          "Get Transaction Result交易結果查詢"
-        ],
-        "summary": "Get Transaction Result交易結果查詢",
-        "description": "1. 需帶入原始交易序號(txSN)，可查詢交易類型：\n1.1. 付款(P)\n1.2. 儲值(RS)\n1.3. 退款(RF)\n1.4. 提領(W)\n1.5. 約定帳號(BA)\n1.6. 取消帳號連結(UBA)\n2. 查無資料時，Response.header.returnCode將取得M0001\n3. 請參考 6.2 API呼叫流程\n",
-        "operationId": "getTransactionResultUsingPOST",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "transactionInfo",
-            "description": "transactionInfo",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/request«EPG030401RequestBody»"
-            }
+    "/EPG03/01/EPG030101" : {
+      "post" : {
+        "description" : "1. 銀行帳號資料可透過EPG020301取得 \n2. 請參考6.2 API呼叫流程",
+        "operationId" : "paymentTransactionUsingPOST",
+        "summary" : "Payment Transaction帳號付款交易",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "description" : "paymentInfo",
+          "required" : true,
+          "in" : "body",
+          "name" : "paymentInfo",
+          "schema" : {
+            "$ref" : "#/definitions/request«EPG030101RequestBody»"
           }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/response«EPG030401ResponseBody»"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/response«EPG030101ResponseBody»"
             }
           }
         }
       }
     },
-    "/EPG04/01/EPG040101": {
-      "post": {
-        "tags": [
-          "Download Reconciliation file 對帳檔下載"
-        ],
-        "summary": "Download Reconciliation file",
-        "description": "Download Reconciliation file",
-        "operationId": "downloadDailyReportUsingPOST",
-        "consumes": [
-          "application/json;charset=UTF-8"
-        ],
-        "produces": [
-          "application/octet-stream",
-          "application/json;charset=UTF-8"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "request",
-            "description": "request",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/request«EPG040101RequestBody»"
-            }
+    "/EPG02/03/EPG020301" : {
+      "post" : {
+        "description" : "查詢帳號連結，請輸入統一證號",
+        "operationId" : "getBindedAcctUsingPOST",
+        "summary" : "getBindedAcct",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "description" : "getBindedAcct",
+          "required" : true,
+          "in" : "body",
+          "name" : "getBindedAcct",
+          "schema" : {
+            "$ref" : "#/definitions/request«EPG020301RequestBody»"
           }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Resource"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/response«EPG020301ResponseBody»"
             }
           }
         }
       }
     }
   },
-  "definitions": {
-    "EPG000101RequestBody": {
-      "type": "object",
-      "required": [
-        "userPcode"
-      ],
-      "properties": {
-        "userPcode": {
-          "type": "string",
-          "example": "bb9301346855ebe7d7a2202ecf66f95d5c47279f5836683dd2754761cc8093ae"
+  "definitions" : {
+    "EPG030401RequestBody" : {
+      "required" : [ "oriTxSN" ],
+      "properties" : {
+        "oriTxSN" : {
+          "description" : "原交易序號(txSN)",
+          "example" : "123456",
+          "type" : "string"
         }
-      }
+      },
+      "type" : "object"
     },
-    "EPG000101ResponseBody": {
-      "type": "object",
-      "properties": {
-        "accessToken": {
-          "type": "string"
+    "EPG030301RequestBody" : {
+      "required" : [ "amt", "idNo", "tiAcct" ],
+      "properties" : {
+        "amt" : {
+          "description" : "交易金額(NTD,無小數)，與交易類型(txType)對應如下：\n付款(P)：付款金額\n儲值(RS)：儲值金額\n提領(W)：提領金額\n退款(RF)：退款金額\n",
+          "example" : "1000",
+          "type" : "string"
+        },
+        "idNo" : {
+          "description" : "統一證號",
+          "example" : "F123456789",
+          "type" : "string"
+        },
+        "tiAcct" : {
+          "description" : "轉入帳號",
+          "example" : "39842094",
+          "type" : "string"
         }
-      }
+      },
+      "type" : "object"
     },
-    "EPG010101RequestBody": {
-      "type": "object",
-      "required": [
-        "acct",
-        "idNo"
-      ],
-      "properties": {
-        "acct": {
-          "type": "string",
-          "example": "000012345678",
-          "description": "存款號碼"
+    "request«EPG030201RequestBody»" : {
+      "properties" : {
+        "body" : {
+          "$ref" : "#/definitions/EPG030201RequestBody"
         },
-        "bankId": {
-          "type": "string",
-          "example": "123",
-          "description": "銀行代碼"
-        },
-        "idNo": {
-          "type": "string",
-          "example": "A123456789",
-          "description": "統一證號"
+        "header" : {
+          "$ref" : "#/definitions/EPGRequestHeader"
         }
-      }
+      },
+      "type" : "object"
     },
-    "EPG010101ResponseBody": {
-      "type": "object"
-    },
-    "EPG020101RequestBody": {
-      "type": "object",
-      "required": [
-        "idNo"
-      ],
-      "properties": {
-        "idNo": {
-          "type": "string",
-          "example": "A123456789",
-          "description": "統一證號"
+    "EPG030101RequestBody" : {
+      "required" : [ "amt", "bankId", "idNo", "toAcct", "txType" ],
+      "properties" : {
+        "amt" : {
+          "description" : "交易金額(NTD,無小數)，與交易類型(txType)對應如下：\n付款(P)：付款金額\n儲值(RS)：儲值金額\n提領(W)：提領金額\n退款(RF)：退款金額\n",
+          "example" : "1000",
+          "type" : "string"
+        },
+        "bankId" : {
+          "description" : "轉出帳號銀行代碼",
+          "example" : "0000000",
+          "type" : "string"
+        },
+        "idNo" : {
+          "description" : "統一證號",
+          "example" : "F123456789",
+          "type" : "string"
+        },
+        "toAcct" : {
+          "description" : "轉出(付款)帳號",
+          "example" : "123456",
+          "type" : "string"
+        },
+        "txType" : {
+          "description" : "交易類型(付款:P/儲值:RS/退款:RF/提領:W/約定帳號:BA/取消連結帳號:UBA)",
+          "example" : "P",
+          "type" : "string"
         }
-      }
+      },
+      "type" : "object"
     },
-    "EPG020101ResponseBody": {
-      "type": "object",
-      "properties": {
-        "termsUrl": {
-          "type": "string",
-          "example": "http://youpass.thinkpower.com",
-          "description": "約定帳號同意條款網址"
+    "request«EPG020101RequestBody»" : {
+      "properties" : {
+        "body" : {
+          "$ref" : "#/definitions/EPG020101RequestBody"
+        },
+        "header" : {
+          "$ref" : "#/definitions/EPGRequestHeader"
         }
-      }
+      },
+      "type" : "object"
     },
-    "EPG020201RequestBody": {
-      "type": "object",
-      "required": [
-        "acct",
-        "idNo"
-      ],
-      "properties": {
-        "acct": {
-          "type": "string",
-          "example": "000012345678",
-          "description": "存款號碼"
-        },
-        "bankId": {
-          "type": "string",
-          "example": "123",
-          "description": "銀行代碼"
-        },
-        "idNo": {
-          "type": "string",
-          "example": "A123456789",
-          "description": "統一證號"
+    "EPG020101ResponseBody" : {
+      "properties" : {
+        "termsUrl" : {
+          "description" : "約定帳號同意條款網址",
+          "example" : "http://youpass.thinkpower.com",
+          "type" : "string"
         }
-      }
+      },
+      "type" : "object"
     },
-    "EPG020201ResponseBody": {
-      "type": "object"
-    },
-    "EPG020301RequestBody": {
-      "type": "object",
-      "required": [
-        "idNo"
-      ],
-      "properties": {
-        "idNo": {
-          "type": "string",
-          "example": "A123456789",
-          "description": "統一證號"
+    "EPG030401ResponseBody" : {
+      "required" : [ "amt", "totalRefAmt", "txResult", "txType" ],
+      "properties" : {
+        "amt" : {
+          "description" : "交易金額(NTD,無小數)，與交易類型(txType)對應如下：\n付款(P)：付款金額\n儲值(RS)：儲值金額\n提領(W)：提領金額\n退款(RF)：退款金額\n",
+          "example" : "1000",
+          "type" : "string"
+        },
+        "totalRefAmt" : {
+          "description" : "累計已退總金額(NTD,無小數，退款:RF時，此欄位才有內容)",
+          "example" : "560",
+          "type" : "string"
+        },
+        "txResult" : {
+          "description" : "交易結果(成功:Success/失敗:Fail)",
+          "example" : "Success",
+          "type" : "string"
+        },
+        "txType" : {
+          "description" : "交易類型(付款:P/儲值:RS/退款:RF/提領:W/約定帳號:BA/取消連結帳號:UBA)",
+          "example" : "P",
+          "type" : "string"
         }
-      }
+      },
+      "type" : "object"
     },
-    "EPG020301ResponseBody": {
-      "type": "object",
-      "properties": {
-        "acctList": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/EPG020301ResponseBody_Acct"
-          }
+    "response«EPG020201ResponseBody»" : {
+      "properties" : {
+        "body" : {
+          "$ref" : "#/definitions/EPG020201ResponseBody"
+        },
+        "header" : {
+          "$ref" : "#/definitions/EPGResponseHeader"
         }
-      }
+      },
+      "type" : "object"
     },
-    "EPG020301ResponseBody_Acct": {
-      "type": "object",
-      "required": [
-        "acct"
-      ],
-      "properties": {
-        "acct": {
-          "type": "string",
-          "example": "000012345678",
-          "description": "存款號碼"
+    "response«EPG030101ResponseBody»" : {
+      "properties" : {
+        "body" : {
+          "$ref" : "#/definitions/EPG030101ResponseBody"
         },
-        "bankId": {
-          "type": "string",
-          "example": "123",
-          "description": "銀行代碼"
+        "header" : {
+          "$ref" : "#/definitions/EPGResponseHeader"
         }
-      }
+      },
+      "type" : "object"
     },
-    "EPG030101RequestBody": {
-      "type": "object",
-      "required": [
-        "amt",
-        "bankId",
-        "idNo",
-        "toAcct",
-        "txType"
-      ],
-      "properties": {
-        "amt": {
-          "type": "string",
-          "example": "1000",
-          "description": "交易金額(NTD,無小數)，與交易類型(txType)對應如下：\n付款(P)：付款金額\n儲值(RS)：儲值金額\n提領(W)：提領金額\n退款(RF)：退款金額\n"
-        },
-        "bankId": {
-          "type": "string",
-          "example": "0000000",
-          "description": "轉出帳號銀行代碼"
-        },
-        "idNo": {
-          "type": "string",
-          "example": "F123456789",
-          "description": "統一證號"
-        },
-        "toAcct": {
-          "type": "string",
-          "example": "123456",
-          "description": "轉出(付款)帳號"
-        },
-        "txType": {
-          "type": "string",
-          "example": "P",
-          "description": "交易類型(付款:P/儲值:RS/退款:RF/提領:W/約定帳號:BA/取消連結帳號:UBA)"
+    "EPG040101RequestBody" : {
+      "properties" : {
+        "fileDate" : {
+          "description" : "對帳檔日期",
+          "type" : "string"
         }
-      }
+      },
+      "type" : "object"
     },
-    "EPG030101ResponseBody": {
-      "type": "object",
-      "required": [
-        "amt",
-        "fee"
-      ],
-      "properties": {
-        "amt": {
-          "type": "string",
-          "example": "1000",
-          "description": "交易金額(NTD,無小數)，與交易類型(txType)對應如下：\n付款(P)：付款金額\n儲值(RS)：儲值金額\n提領(W)：提領金額\n退款(RF)：退款金額\n"
+    "URI" : {
+      "properties" : {
+        "absolute" : {
+          "type" : "boolean"
         },
-        "fee": {
-          "type": "string",
-          "example": "5",
-          "description": "手續費"
+        "authority" : {
+          "type" : "string"
+        },
+        "fragment" : {
+          "type" : "string"
+        },
+        "host" : {
+          "type" : "string"
+        },
+        "opaque" : {
+          "type" : "boolean"
+        },
+        "path" : {
+          "type" : "string"
+        },
+        "port" : {
+          "format" : "int32",
+          "type" : "integer"
+        },
+        "query" : {
+          "type" : "string"
+        },
+        "rawAuthority" : {
+          "type" : "string"
+        },
+        "rawFragment" : {
+          "type" : "string"
+        },
+        "rawPath" : {
+          "type" : "string"
+        },
+        "rawQuery" : {
+          "type" : "string"
+        },
+        "rawSchemeSpecificPart" : {
+          "type" : "string"
+        },
+        "rawUserInfo" : {
+          "type" : "string"
+        },
+        "scheme" : {
+          "type" : "string"
+        },
+        "schemeSpecificPart" : {
+          "type" : "string"
+        },
+        "userInfo" : {
+          "type" : "string"
         }
-      }
+      },
+      "type" : "object"
     },
-    "EPG030201RequestBody": {
-      "type": "object",
-      "required": [
-        "amt",
-        "bankId",
-        "idNo",
-        "oriTxSN",
-        "tiAcct"
-      ],
-      "properties": {
-        "amt": {
-          "type": "string",
-          "example": "1000",
-          "description": "交易金額(NTD,無小數)，與交易類型(txType)對應如下：\n付款(P)：付款金額\n儲值(RS)：儲值金額\n提領(W)：提領金額\n退款(RF)：退款金額\n"
+    "EPG020301ResponseBody_Acct" : {
+      "required" : [ "acct" ],
+      "properties" : {
+        "acct" : {
+          "description" : "存款號碼",
+          "example" : "000012345678",
+          "type" : "string"
         },
-        "bankId": {
-          "type": "string",
-          "example": "0000000",
-          "description": "轉出帳號銀行代碼"
-        },
-        "idNo": {
-          "type": "string",
-          "example": "F123456789",
-          "description": "統一證號"
-        },
-        "oriTxSN": {
-          "type": "string",
-          "example": "123456",
-          "description": "原交易序號(txSN)"
-        },
-        "tiAcct": {
-          "type": "string",
-          "example": "39842094",
-          "description": "轉入帳號"
+        "bankId" : {
+          "description" : "銀行代碼",
+          "example" : "123",
+          "type" : "string"
         }
-      }
+      },
+      "type" : "object"
     },
-    "EPG030201ResponseBody": {
-      "type": "object",
-      "required": [
-        "amt",
-        "fee",
-        "oriTxSN",
-        "totalAmt",
-        "txResult",
-        "txResultMsg"
-      ],
-      "properties": {
-        "amt": {
-          "type": "string",
-          "example": "1000",
-          "description": "交易金額(NTD,無小數)，與交易類型(txType)對應如下：\n付款(P)：付款金額\n儲值(RS)：儲值金額\n提領(W)：提領金額\n退款(RF)：退款金額\n"
+    "URL" : {
+      "properties" : {
+        "authority" : {
+          "type" : "string"
         },
-        "fee": {
-          "type": "string",
-          "example": "5",
-          "description": "手續費"
+        "content" : {
+          "type" : "object"
         },
-        "oriTxSN": {
-          "type": "string",
-          "example": "123456",
-          "description": "原交易序號(txSN)"
+        "defaultPort" : {
+          "format" : "int32",
+          "type" : "integer"
         },
-        "totalAmt": {
-          "type": "string",
-          "example": "4000",
-          "description": "累計已退總金額(NTD,無小數)"
+        "file" : {
+          "type" : "string"
         },
-        "txResult": {
-          "type": "string",
-          "example": "Success",
-          "description": "交易結果(成功:Success/失敗:Fail)"
+        "host" : {
+          "type" : "string"
         },
-        "txResultMsg": {
-          "type": "string",
-          "example": " ",
-          "description": "交易失敗原因(退款失敗原因)"
+        "path" : {
+          "type" : "string"
+        },
+        "port" : {
+          "format" : "int32",
+          "type" : "integer"
+        },
+        "protocol" : {
+          "type" : "string"
+        },
+        "query" : {
+          "type" : "string"
+        },
+        "ref" : {
+          "type" : "string"
+        },
+        "userInfo" : {
+          "type" : "string"
         }
-      }
+      },
+      "type" : "object"
     },
-    "EPG030301RequestBody": {
-      "type": "object",
-      "required": [
-        "amt",
-        "idNo",
-        "tiAcct"
-      ],
-      "properties": {
-        "amt": {
-          "type": "string",
-          "example": "1000",
-          "description": "交易金額(NTD,無小數)，與交易類型(txType)對應如下：\n付款(P)：付款金額\n儲值(RS)：儲值金額\n提領(W)：提領金額\n退款(RF)：退款金額\n"
+    "EPG020201RequestBody" : {
+      "required" : [ "acct", "idNo" ],
+      "properties" : {
+        "acct" : {
+          "description" : "存款號碼",
+          "example" : "000012345678",
+          "type" : "string"
         },
-        "idNo": {
-          "type": "string",
-          "example": "F123456789",
-          "description": "統一證號"
+        "bankId" : {
+          "description" : "銀行代碼",
+          "example" : "123",
+          "type" : "string"
         },
-        "tiAcct": {
-          "type": "string",
-          "example": "39842094",
-          "description": "轉入帳號"
+        "idNo" : {
+          "description" : "統一證號",
+          "example" : "A123456789",
+          "type" : "string"
         }
-      }
+      },
+      "type" : "object"
     },
-    "EPG030301ResponseBody": {
-      "type": "object",
-      "required": [
-        "amt",
-        "fee"
-      ],
-      "properties": {
-        "amt": {
-          "type": "string",
-          "example": "1000",
-          "description": "交易金額(NTD,無小數)，與交易類型(txType)對應如下：\n付款(P)：付款金額\n儲值(RS)：儲值金額\n提領(W)：提領金額\n退款(RF)：退款金額\n"
+    "EPG030201ResponseBody" : {
+      "required" : [ "amt", "fee", "oriTxSN", "totalAmt", "txResult", "txResultMsg" ],
+      "properties" : {
+        "amt" : {
+          "description" : "交易金額(NTD,無小數)，與交易類型(txType)對應如下：\n付款(P)：付款金額\n儲值(RS)：儲值金額\n提領(W)：提領金額\n退款(RF)：退款金額\n",
+          "example" : "1000",
+          "type" : "string"
         },
-        "fee": {
-          "type": "string",
-          "example": "5",
-          "description": "手續費"
+        "fee" : {
+          "description" : "手續費",
+          "example" : "5",
+          "type" : "string"
+        },
+        "oriTxSN" : {
+          "description" : "原交易序號(txSN)",
+          "example" : "123456",
+          "type" : "string"
+        },
+        "totalAmt" : {
+          "description" : "累計已退總金額(NTD,無小數)",
+          "example" : "4000",
+          "type" : "string"
+        },
+        "txResult" : {
+          "description" : "交易結果(成功:Success/失敗:Fail)",
+          "example" : "Success",
+          "type" : "string"
+        },
+        "txResultMsg" : {
+          "description" : "交易失敗原因(退款失敗原因)",
+          "example" : " ",
+          "type" : "string"
         }
-      }
+      },
+      "type" : "object"
     },
-    "EPG030401RequestBody": {
-      "type": "object",
-      "required": [
-        "oriTxSN"
-      ],
-      "properties": {
-        "oriTxSN": {
-          "type": "string",
-          "example": "123456",
-          "description": "原交易序號(txSN)"
+    "EPG020301RequestBody" : {
+      "required" : [ "idNo" ],
+      "properties" : {
+        "idNo" : {
+          "description" : "統一證號",
+          "example" : "A123456789",
+          "type" : "string"
         }
-      }
+      },
+      "type" : "object"
     },
-    "EPG030401ResponseBody": {
-      "type": "object",
-      "required": [
-        "amt",
-        "totalRefAmt",
-        "txResult",
-        "txType"
-      ],
-      "properties": {
-        "amt": {
-          "type": "string",
-          "example": "1000",
-          "description": "交易金額(NTD,無小數)，與交易類型(txType)對應如下：\n付款(P)：付款金額\n儲值(RS)：儲值金額\n提領(W)：提領金額\n退款(RF)：退款金額\n"
+    "request«EPG020301RequestBody»" : {
+      "properties" : {
+        "body" : {
+          "$ref" : "#/definitions/EPG020301RequestBody"
         },
-        "totalRefAmt": {
-          "type": "string",
-          "example": "560",
-          "description": "累計已退總金額(NTD,無小數，退款:RF時，此欄位才有內容)"
-        },
-        "txResult": {
-          "type": "string",
-          "example": "Success",
-          "description": "交易結果(成功:Success/失敗:Fail)"
-        },
-        "txType": {
-          "type": "string",
-          "example": "P",
-          "description": "交易類型(付款:P/儲值:RS/退款:RF/提領:W/約定帳號:BA/取消連結帳號:UBA)"
+        "header" : {
+          "$ref" : "#/definitions/EPGRequestHeader"
         }
-      }
+      },
+      "type" : "object"
     },
-    "EPGRequestHeader": {
-      "type": "object",
-      "required": [
-        "accessToken",
-        "signature",
-        "txDate",
-        "txID",
-        "txSN",
-        "userID"
-      ],
-      "properties": {
-        "accessToken": {
-          "type": "string",
-          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlblNlcm5vIjoiQklQMjAxODRDMDIwMjVQNFU4MTAwNzQxNEY0NzAzN1IiLCJpc3MiOiJodHRwOi8vd3d3LmtnaWJhbmsuY29tIiwibWVyU2Vybm8iOiIyNzIwMTgwMTMxMTUwNjAzNTI5MyIsImV4cCI6MTUxNzUzNzg2MSwiaWF0IjoxNTE3NTM3MjYxLCJ1c2VySWQiOiJ1c2VyMDEifQ.hEE7sBN2rQI1DkJVS-xsCRu4BVWCcrAzkhb3JD6TuqE",
-          "description": "一次性交易序號，用以驗證交易權限及控制重複交易、逾時交易"
+    "response«EPG020101ResponseBody»" : {
+      "properties" : {
+        "body" : {
+          "$ref" : "#/definitions/EPG020101ResponseBody"
         },
-        "signature": {
-          "type": "string",
-          "example": "xxxxxxxxxxxxxx",
-          "description": "PKCS7簽章值"
-        },
-        "txDate": {
-          "type": "string",
-          "example": "20171226152331",
-          "description": "交易時間，格式為 yyyyMMddHHmmss(UTC+8)"
-        },
-        "txID": {
-          "type": "string",
-          "example": "EPG020101",
-          "description": "交易代碼(eg. EPG020101,前綴英文需為大寫)"
-        },
-        "txSN": {
-          "type": "string",
-          "example": "1712262351684",
-          "description": "交易序號，格式為YY(西元年後兩碼)+MMDD+七碼流水號"
-        },
-        "userID": {
-          "type": "string",
-          "example": "user01",
-          "description": "使用者(電支機構)ID"
+        "header" : {
+          "$ref" : "#/definitions/EPGResponseHeader"
         }
-      }
+      },
+      "type" : "object"
     },
-    "EPGResponseHeader": {
-      "type": "object",
-      "required": [
-        "returnCode",
-        "txDate",
-        "txID",
-        "txSN"
-      ],
-      "properties": {
-        "returnCode": {
-          "type": "string",
-          "example": "M0000",
-          "description": "回覆代碼"
+    "response«EPG030301ResponseBody»" : {
+      "properties" : {
+        "body" : {
+          "$ref" : "#/definitions/EPG030301ResponseBody"
         },
-        "returnMessage": {
-          "type": "string",
-          "example": "成功",
-          "description": "回覆訊息"
-        },
-        "txDate": {
-          "type": "string",
-          "example": "20171226152331",
-          "description": "交易時間，格式為 yyyyMMddHHmmss(UTC+8)"
-        },
-        "txID": {
-          "type": "string",
-          "example": "EPG020101",
-          "description": "交易代碼(eg. EPG020101,前綴英文需為大寫)"
-        },
-        "txSN": {
-          "type": "string",
-          "example": "1712262351684",
-          "description": "交易序號，格式為YY(西元年後兩碼)+MMDD+七碼流水號"
+        "header" : {
+          "$ref" : "#/definitions/EPGResponseHeader"
         }
-      }
+      },
+      "type" : "object"
     },
-    "EPG040101RequestBody": {
-      "type": "object",
-      "properties": {
-        "fileDate": {
-          "type": "string",
-          "description": "對帳檔日期"
+    "EPG010101ResponseBody" : {
+      "type" : "object"
+    },
+    "request«EPG030401RequestBody»" : {
+      "properties" : {
+        "body" : {
+          "$ref" : "#/definitions/EPG030401RequestBody"
+        },
+        "header" : {
+          "$ref" : "#/definitions/EPGRequestHeader"
         }
-      }
+      },
+      "type" : "object"
     },
-    "File": {
-      "type": "object",
-      "properties": {
-        "absolute": {
-          "type": "boolean"
+    "EPG030201RequestBody" : {
+      "required" : [ "amt", "bankId", "idNo", "oriTxSN", "tiAcct" ],
+      "properties" : {
+        "amt" : {
+          "description" : "交易金額(NTD,無小數)，與交易類型(txType)對應如下：\n付款(P)：付款金額\n儲值(RS)：儲值金額\n提領(W)：提領金額\n退款(RF)：退款金額\n",
+          "example" : "1000",
+          "type" : "string"
         },
-        "absoluteFile": {
-          "$ref": "#/definitions/File"
+        "bankId" : {
+          "description" : "轉出帳號銀行代碼",
+          "example" : "0000000",
+          "type" : "string"
         },
-        "absolutePath": {
-          "type": "string"
+        "idNo" : {
+          "description" : "統一證號",
+          "example" : "F123456789",
+          "type" : "string"
         },
-        "canonicalFile": {
-          "$ref": "#/definitions/File"
+        "oriTxSN" : {
+          "description" : "原交易序號(txSN)",
+          "example" : "123456",
+          "type" : "string"
         },
-        "canonicalPath": {
-          "type": "string"
-        },
-        "directory": {
-          "type": "boolean"
-        },
-        "file": {
-          "type": "boolean"
-        },
-        "freeSpace": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "hidden": {
-          "type": "boolean"
-        },
-        "name": {
-          "type": "string"
-        },
-        "parent": {
-          "type": "string"
-        },
-        "parentFile": {
-          "$ref": "#/definitions/File"
-        },
-        "path": {
-          "type": "string"
-        },
-        "totalSpace": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "usableSpace": {
-          "type": "integer",
-          "format": "int64"
+        "tiAcct" : {
+          "description" : "轉入帳號",
+          "example" : "39842094",
+          "type" : "string"
         }
-      }
+      },
+      "type" : "object"
     },
-    "InputStream": {
-      "type": "object"
-    },
-    "Resource": {
-      "type": "object",
-      "properties": {
-        "description": {
-          "type": "string"
+    "EPG030301ResponseBody" : {
+      "required" : [ "amt", "fee" ],
+      "properties" : {
+        "amt" : {
+          "description" : "交易金額(NTD,無小數)，與交易類型(txType)對應如下：\n付款(P)：付款金額\n儲值(RS)：儲值金額\n提領(W)：提領金額\n退款(RF)：退款金額\n",
+          "example" : "1000",
+          "type" : "string"
         },
-        "file": {
-          "$ref": "#/definitions/File"
-        },
-        "filename": {
-          "type": "string"
-        },
-        "inputStream": {
-          "$ref": "#/definitions/InputStream"
-        },
-        "open": {
-          "type": "boolean"
-        },
-        "readable": {
-          "type": "boolean"
-        },
-        "uri": {
-          "$ref": "#/definitions/URI"
-        },
-        "url": {
-          "$ref": "#/definitions/URL"
+        "fee" : {
+          "description" : "手續費",
+          "example" : "5",
+          "type" : "string"
         }
-      }
+      },
+      "type" : "object"
     },
-    "URI": {
-      "type": "object",
-      "properties": {
-        "absolute": {
-          "type": "boolean"
+    "response«EPG030401ResponseBody»" : {
+      "properties" : {
+        "body" : {
+          "$ref" : "#/definitions/EPG030401ResponseBody"
         },
-        "authority": {
-          "type": "string"
-        },
-        "fragment": {
-          "type": "string"
-        },
-        "host": {
-          "type": "string"
-        },
-        "opaque": {
-          "type": "boolean"
-        },
-        "path": {
-          "type": "string"
-        },
-        "port": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "query": {
-          "type": "string"
-        },
-        "rawAuthority": {
-          "type": "string"
-        },
-        "rawFragment": {
-          "type": "string"
-        },
-        "rawPath": {
-          "type": "string"
-        },
-        "rawQuery": {
-          "type": "string"
-        },
-        "rawSchemeSpecificPart": {
-          "type": "string"
-        },
-        "rawUserInfo": {
-          "type": "string"
-        },
-        "scheme": {
-          "type": "string"
-        },
-        "schemeSpecificPart": {
-          "type": "string"
-        },
-        "userInfo": {
-          "type": "string"
+        "header" : {
+          "$ref" : "#/definitions/EPGResponseHeader"
         }
-      }
+      },
+      "type" : "object"
     },
-    "URL": {
-      "type": "object",
-      "properties": {
-        "authority": {
-          "type": "string"
-        },
-        "content": {
-          "type": "object"
-        },
-        "defaultPort": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "file": {
-          "type": "string"
-        },
-        "host": {
-          "type": "string"
-        },
-        "path": {
-          "type": "string"
-        },
-        "port": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "protocol": {
-          "type": "string"
-        },
-        "query": {
-          "type": "string"
-        },
-        "ref": {
-          "type": "string"
-        },
-        "userInfo": {
-          "type": "string"
-        }
-      }
+    "EPG020201ResponseBody" : {
+      "type" : "object"
     },
-    "request«EPG000101RequestBody»": {
-      "type": "object",
-      "properties": {
-        "body": {
-          "$ref": "#/definitions/EPG000101RequestBody"
-        },
-        "header": {
-          "$ref": "#/definitions/EPGRequestHeader"
-        }
-      }
+    "InputStream" : {
+      "type" : "object"
     },
-    "request«EPG010101RequestBody»": {
-      "type": "object",
-      "properties": {
-        "body": {
-          "$ref": "#/definitions/EPG010101RequestBody"
+    "request«EPG020201RequestBody»" : {
+      "properties" : {
+        "body" : {
+          "$ref" : "#/definitions/EPG020201RequestBody"
         },
-        "header": {
-          "$ref": "#/definitions/EPGRequestHeader"
+        "header" : {
+          "$ref" : "#/definitions/EPGRequestHeader"
         }
-      }
+      },
+      "type" : "object"
     },
-    "request«EPG020101RequestBody»": {
-      "type": "object",
-      "properties": {
-        "body": {
-          "$ref": "#/definitions/EPG020101RequestBody"
+    "response«EPG010101ResponseBody»" : {
+      "properties" : {
+        "body" : {
+          "$ref" : "#/definitions/EPG010101ResponseBody"
         },
-        "header": {
-          "$ref": "#/definitions/EPGRequestHeader"
+        "header" : {
+          "$ref" : "#/definitions/EPGResponseHeader"
         }
-      }
+      },
+      "type" : "object"
     },
-    "request«EPG020201RequestBody»": {
-      "type": "object",
-      "properties": {
-        "body": {
-          "$ref": "#/definitions/EPG020201RequestBody"
+    "Resource" : {
+      "properties" : {
+        "description" : {
+          "type" : "string"
         },
-        "header": {
-          "$ref": "#/definitions/EPGRequestHeader"
+        "file" : {
+          "$ref" : "#/definitions/File"
+        },
+        "filename" : {
+          "type" : "string"
+        },
+        "inputStream" : {
+          "$ref" : "#/definitions/InputStream"
+        },
+        "open" : {
+          "type" : "boolean"
+        },
+        "readable" : {
+          "type" : "boolean"
+        },
+        "uri" : {
+          "$ref" : "#/definitions/URI"
+        },
+        "url" : {
+          "$ref" : "#/definitions/URL"
         }
-      }
+      },
+      "type" : "object"
     },
-    "request«EPG020301RequestBody»": {
-      "type": "object",
-      "properties": {
-        "body": {
-          "$ref": "#/definitions/EPG020301RequestBody"
+    "EPG030101ResponseBody" : {
+      "required" : [ "amt", "fee" ],
+      "properties" : {
+        "amt" : {
+          "description" : "交易金額(NTD,無小數)，與交易類型(txType)對應如下：\n付款(P)：付款金額\n儲值(RS)：儲值金額\n提領(W)：提領金額\n退款(RF)：退款金額\n",
+          "example" : "1000",
+          "type" : "string"
         },
-        "header": {
-          "$ref": "#/definitions/EPGRequestHeader"
+        "fee" : {
+          "description" : "手續費",
+          "example" : "5",
+          "type" : "string"
         }
-      }
+      },
+      "type" : "object"
     },
-    "response«EPG020101ResponseBody»": {
-      "type": "object",
-      "properties": {
-        "body": {
-          "$ref": "#/definitions/EPG020101ResponseBody"
+    "EPGRequestHeader" : {
+      "required" : [ "accessToken", "signature", "txDate", "txID", "txSN", "userID" ],
+      "properties" : {
+        "accessToken" : {
+          "description" : "一次性交易序號，用以驗證交易權限及控制重複交易、逾時交易",
+          "example" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlblNlcm5vIjoiQklQMjAxODRDMDIwMjVQNFU4MTAwNzQxNEY0NzAzN1IiLCJpc3MiOiJodHRwOi8vd3d3LmtnaWJhbmsuY29tIiwibWVyU2Vybm8iOiIyNzIwMTgwMTMxMTUwNjAzNTI5MyIsImV4cCI6MTUxNzUzNzg2MSwiaWF0IjoxNTE3NTM3MjYxLCJ1c2VySWQiOiJ1c2VyMDEifQ.hEE7sBN2rQI1DkJVS-xsCRu4BVWCcrAzkhb3JD6TuqE",
+          "type" : "string"
         },
-        "header": {
-          "$ref": "#/definitions/EPGResponseHeader"
+        "signature" : {
+          "description" : "PKCS7簽章值",
+          "example" : "xxxxxxxxxxxxxx",
+          "type" : "string"
+        },
+        "txDate" : {
+          "description" : "交易時間，格式為 yyyyMMddHHmmss(UTC+8)",
+          "example" : "20171226152331",
+          "type" : "string"
+        },
+        "txID" : {
+          "description" : "交易代碼(eg. EPG020101,前綴英文需為大寫)",
+          "example" : "EPG020101",
+          "type" : "string"
+        },
+        "txSN" : {
+          "description" : "交易序號，格式為YY(西元年後兩碼)+MMDD+七碼流水號",
+          "example" : "1712262351684",
+          "type" : "string"
+        },
+        "userID" : {
+          "description" : "使用者(電支機構)ID",
+          "example" : "user01",
+          "type" : "string"
         }
-      }
+      },
+      "type" : "object"
     },
-    "response«EPG020201ResponseBody»": {
-      "type": "object",
-      "properties": {
-        "body": {
-          "$ref": "#/definitions/EPG020201ResponseBody"
+    "EPGResponseHeader" : {
+      "required" : [ "returnCode", "txDate", "txID", "txSN" ],
+      "properties" : {
+        "returnCode" : {
+          "description" : "回覆代碼",
+          "example" : "M0000",
+          "type" : "string"
         },
-        "header": {
-          "$ref": "#/definitions/EPGResponseHeader"
+        "returnMessage" : {
+          "description" : "回覆訊息",
+          "example" : "成功",
+          "type" : "string"
+        },
+        "txDate" : {
+          "description" : "交易時間，格式為 yyyyMMddHHmmss(UTC+8)",
+          "example" : "20171226152331",
+          "type" : "string"
+        },
+        "txID" : {
+          "description" : "交易代碼(eg. EPG020101,前綴英文需為大寫)",
+          "example" : "EPG020101",
+          "type" : "string"
+        },
+        "txSN" : {
+          "description" : "交易序號，格式為YY(西元年後兩碼)+MMDD+七碼流水號",
+          "example" : "1712262351684",
+          "type" : "string"
         }
-      }
+      },
+      "type" : "object"
     },
-    "response«EPG020301ResponseBody»": {
-      "type": "object",
-      "properties": {
-        "body": {
-          "$ref": "#/definitions/EPG020301ResponseBody"
-        },
-        "header": {
-          "$ref": "#/definitions/EPGResponseHeader"
+    "EPG000101RequestBody" : {
+      "required" : [ "userPcode" ],
+      "properties" : {
+        "userPcode" : {
+          "example" : "bb9301346855ebe7d7a2202ecf66f95d5c47279f5836683dd2754761cc8093ae",
+          "type" : "string"
         }
-      }
+      },
+      "type" : "object"
     },
-    "request«EPG030101RequestBody»": {
-      "type": "object",
-      "properties": {
-        "body": {
-          "$ref": "#/definitions/EPG030101RequestBody"
+    "request«EPG010101RequestBody»" : {
+      "properties" : {
+        "body" : {
+          "$ref" : "#/definitions/EPG010101RequestBody"
         },
-        "header": {
-          "$ref": "#/definitions/EPGRequestHeader"
+        "header" : {
+          "$ref" : "#/definitions/EPGRequestHeader"
         }
-      }
+      },
+      "type" : "object"
     },
-    "request«EPG030201RequestBody»": {
-      "type": "object",
-      "properties": {
-        "body": {
-          "$ref": "#/definitions/EPG030201RequestBody"
-        },
-        "header": {
-          "$ref": "#/definitions/EPGRequestHeader"
+    "EPG000101ResponseBody" : {
+      "properties" : {
+        "accessToken" : {
+          "type" : "string"
         }
-      }
+      },
+      "type" : "object"
     },
-    "request«EPG030301RequestBody»": {
-      "type": "object",
-      "properties": {
-        "body": {
-          "$ref": "#/definitions/EPG030301RequestBody"
-        },
-        "header": {
-          "$ref": "#/definitions/EPGRequestHeader"
+    "EPG020101RequestBody" : {
+      "required" : [ "idNo" ],
+      "properties" : {
+        "idNo" : {
+          "description" : "統一證號",
+          "example" : "A123456789",
+          "type" : "string"
         }
-      }
+      },
+      "type" : "object"
     },
-    "request«EPG030401RequestBody»": {
-      "type": "object",
-      "properties": {
-        "body": {
-          "$ref": "#/definitions/EPG030401RequestBody"
+    "request«EPG040101RequestBody»" : {
+      "properties" : {
+        "body" : {
+          "$ref" : "#/definitions/EPG040101RequestBody"
         },
-        "header": {
-          "$ref": "#/definitions/EPGRequestHeader"
+        "header" : {
+          "$ref" : "#/definitions/EPGRequestHeader"
         }
-      }
+      },
+      "type" : "object"
     },
-    "response«EPG000101ResponseBody»": {
-      "type": "object",
-      "properties": {
-        "body": {
-          "$ref": "#/definitions/EPG000101ResponseBody"
+    "request«EPG000101RequestBody»" : {
+      "properties" : {
+        "body" : {
+          "$ref" : "#/definitions/EPG000101RequestBody"
         },
-        "header": {
-          "$ref": "#/definitions/EPGResponseHeader"
+        "header" : {
+          "$ref" : "#/definitions/EPGRequestHeader"
         }
-      }
+      },
+      "type" : "object"
     },
-    "response«EPG010101ResponseBody»": {
-      "type": "object",
-      "properties": {
-        "body": {
-          "$ref": "#/definitions/EPG010101ResponseBody"
+    "response«EPG000101ResponseBody»" : {
+      "properties" : {
+        "body" : {
+          "$ref" : "#/definitions/EPG000101ResponseBody"
         },
-        "header": {
-          "$ref": "#/definitions/EPGResponseHeader"
+        "header" : {
+          "$ref" : "#/definitions/EPGResponseHeader"
         }
-      }
+      },
+      "type" : "object"
     },
-    "response«EPG030101ResponseBody»": {
-      "type": "object",
-      "properties": {
-        "body": {
-          "$ref": "#/definitions/EPG030101ResponseBody"
+    "request«EPG030101RequestBody»" : {
+      "properties" : {
+        "body" : {
+          "$ref" : "#/definitions/EPG030101RequestBody"
         },
-        "header": {
-          "$ref": "#/definitions/EPGResponseHeader"
+        "header" : {
+          "$ref" : "#/definitions/EPGRequestHeader"
         }
-      }
+      },
+      "type" : "object"
     },
-    "response«EPG030201ResponseBody»": {
-      "type": "object",
-      "properties": {
-        "body": {
-          "$ref": "#/definitions/EPG030201ResponseBody"
+    "response«EPG020301ResponseBody»" : {
+      "properties" : {
+        "body" : {
+          "$ref" : "#/definitions/EPG020301ResponseBody"
         },
-        "header": {
-          "$ref": "#/definitions/EPGResponseHeader"
+        "header" : {
+          "$ref" : "#/definitions/EPGResponseHeader"
         }
-      }
+      },
+      "type" : "object"
     },
-    "response«EPG030301ResponseBody»": {
-      "type": "object",
-      "properties": {
-        "body": {
-          "$ref": "#/definitions/EPG030301ResponseBody"
+    "response«EPG030201ResponseBody»" : {
+      "properties" : {
+        "body" : {
+          "$ref" : "#/definitions/EPG030201ResponseBody"
         },
-        "header": {
-          "$ref": "#/definitions/EPGResponseHeader"
+        "header" : {
+          "$ref" : "#/definitions/EPGResponseHeader"
         }
-      }
+      },
+      "type" : "object"
     },
-    "response«EPG030401ResponseBody»": {
-      "type": "object",
-      "properties": {
-        "body": {
-          "$ref": "#/definitions/EPG030401ResponseBody"
+    "EPG010101RequestBody" : {
+      "required" : [ "acct", "idNo" ],
+      "properties" : {
+        "acct" : {
+          "description" : "存款號碼",
+          "example" : "000012345678",
+          "type" : "string"
         },
-        "header": {
-          "$ref": "#/definitions/EPGResponseHeader"
+        "bankId" : {
+          "description" : "銀行代碼",
+          "example" : "123",
+          "type" : "string"
+        },
+        "idNo" : {
+          "description" : "統一證號",
+          "example" : "A123456789",
+          "type" : "string"
         }
-      }
+      },
+      "type" : "object"
     },
-    "request«EPG040101RequestBody»": {
-      "type": "object",
-      "properties": {
-        "body": {
-          "$ref": "#/definitions/EPG040101RequestBody"
+    "File" : {
+      "properties" : {
+        "absolute" : {
+          "type" : "boolean"
         },
-        "header": {
-          "$ref": "#/definitions/EPGRequestHeader"
+        "absoluteFile" : {
+          "$ref" : "#/definitions/File"
+        },
+        "absolutePath" : {
+          "type" : "string"
+        },
+        "canonicalFile" : {
+          "$ref" : "#/definitions/File"
+        },
+        "canonicalPath" : {
+          "type" : "string"
+        },
+        "directory" : {
+          "type" : "boolean"
+        },
+        "file" : {
+          "type" : "boolean"
+        },
+        "freeSpace" : {
+          "format" : "int64",
+          "type" : "integer"
+        },
+        "hidden" : {
+          "type" : "boolean"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "parent" : {
+          "type" : "string"
+        },
+        "parentFile" : {
+          "$ref" : "#/definitions/File"
+        },
+        "path" : {
+          "type" : "string"
+        },
+        "totalSpace" : {
+          "format" : "int64",
+          "type" : "integer"
+        },
+        "usableSpace" : {
+          "format" : "int64",
+          "type" : "integer"
         }
-      }
+      },
+      "type" : "object"
+    },
+    "EPG020301ResponseBody" : {
+      "properties" : {
+        "acctList" : {
+          "items" : {
+            "$ref" : "#/definitions/EPG020301ResponseBody_Acct"
+          },
+          "type" : "array"
+        }
+      },
+      "type" : "object"
+    },
+    "request«EPG030301RequestBody»" : {
+      "properties" : {
+        "body" : {
+          "$ref" : "#/definitions/EPG030301RequestBody"
+        },
+        "header" : {
+          "$ref" : "#/definitions/EPGRequestHeader"
+        }
+      },
+      "type" : "object"
     }
+  },
+  "info" : {
+    "title" : "AcctLink",
+    "description" : "EPG000101 取得認證章\nEPG010101 存款帳號驗證\nEPG030101 帳號付款交易\nEPG030201 帳號退款交易\nEPG030301 自行帳號提領交易\nEPG030401 交易結果查詢",
+    "version" : "0.1"
+  },
+  "x-axway" : {
+    "corsEnabled" : true,
+    "basePaths" : [ "", "" ],
+    "serviceType" : "rest",
+    "deprecated" : false,
+    "tags" : { }
   }
 }
