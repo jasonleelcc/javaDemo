@@ -30,7 +30,7 @@
         }
       }
     },
-    "/EPG03/03/EPG030301" : {
+    "/EPG03/03/EPG030301" : { 
       "post" : {
         "description" : "1. 銀行帳號資料可由EPG020301取得 \n2. 參考 6.2 API呼叫流程",
         "operationId" : "refundTransactionUsingPOST_1",
