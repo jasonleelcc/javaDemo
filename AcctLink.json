@@ -2,7 +2,7 @@
   "swagger" : "2.0",
   "host" : "61.218.15.236",
   "basePath" : "/epgw",
-  "schemes" : [  "http"  ],
+  "schemes" : [ "http" ],
   "paths" : {
     "/EPG02/01/EPG020101" : {
       "post" : {
