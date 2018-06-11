@@ -17,14 +17,14 @@
           "in" : "body",
           "name" : "bindingAcct",
           "schema" : {
-            "$ref" : "#/definitions/request«EPG020101RequestBody»"
+            "$ref" : "#/definitions/request-EPG020101RequestBody-"
           }
         } ],
         "responses" : {
           "200" : {
             "description" : "OK",
             "schema" : {
-              "$ref" : "#/definitions/response«EPG020101ResponseBody»"
+              "$ref" : "#/definitions/response-EPG020101ResponseBody-"
             }
           }
         }
@@ -43,14 +43,14 @@
           "in" : "body",
           "name" : "withdrawalInfo",
           "schema" : {
-            "$ref" : "#/definitions/request«EPG030301RequestBody»"
+            "$ref" : "#/definitions/request-EPG030301RequestBody-"
           }
         } ],
         "responses" : {
           "200" : {
             "description" : "OK",
             "schema" : {
-              "$ref" : "#/definitions/response«EPG030301ResponseBody»"
+              "$ref" : "#/definitions/response-EPG030301ResponseBody-"
             }
           }
         }
@@ -69,14 +69,14 @@
           "in" : "body",
           "name" : "unBindingAccout",
           "schema" : {
-            "$ref" : "#/definitions/request«EPG020201RequestBody»"
+            "$ref" : "#/definitions/request-EPG020201RequestBody-"
           }
         } ],
         "responses" : {
           "200" : {
             "description" : "OK",
             "schema" : {
-              "$ref" : "#/definitions/response«EPG020201ResponseBody»"
+              "$ref" : "#/definitions/response-EPG020201ResponseBody-"
             }
           }
         }
@@ -95,14 +95,14 @@
           "in" : "body",
           "name" : "verifyAccout",
           "schema" : {
-            "$ref" : "#/definitions/request«EPG010101RequestBody»"
+            "$ref" : "#/definitions/request-EPG010101RequestBody-"
           }
         } ],
         "responses" : {
           "200" : {
             "description" : "OK,",
             "schema" : {
-              "$ref" : "#/definitions/response«EPG010101ResponseBody»"
+              "$ref" : "#/definitions/response-EPG010101ResponseBody-"
             }
           }
         }
@@ -121,14 +121,14 @@
           "in" : "body",
           "name" : "transactionInfo",
           "schema" : {
-            "$ref" : "#/definitions/request«EPG030401RequestBody»"
+            "$ref" : "#/definitions/request-EPG030401RequestBody-"
           }
         } ],
         "responses" : {
           "200" : {
             "description" : "OK",
             "schema" : {
-              "$ref" : "#/definitions/response«EPG030401ResponseBody»"
+              "$ref" : "#/definitions/response-EPG030401ResponseBody-"
             }
           }
         }
@@ -147,14 +147,14 @@
           "in" : "body",
           "name" : "refundInfo",
           "schema" : {
-            "$ref" : "#/definitions/request«EPG030201RequestBody»"
+            "$ref" : "#/definitions/request-EPG030201RequestBody-"
           }
         } ],
         "responses" : {
           "200" : {
             "description" : "OK",
             "schema" : {
-              "$ref" : "#/definitions/response«EPG030201ResponseBody»"
+              "$ref" : "#/definitions/response-EPG030201ResponseBody-"
             }
           }
         }
@@ -173,7 +173,7 @@
           "in" : "body",
           "name" : "request",
           "schema" : {
-            "$ref" : "#/definitions/request«EPG040101RequestBody»"
+            "$ref" : "#/definitions/request-EPG040101RequestBody-"
           }
         } ],
         "responses" : {
@@ -199,14 +199,14 @@
           "in" : "body",
           "name" : "requestBody",
           "schema" : {
-            "$ref" : "#/definitions/request«EPG000101RequestBody»"
+            "$ref" : "#/definitions/request-EPG000101RequestBody-"
           }
         } ],
         "responses" : {
           "200" : {
             "description" : "OK",
             "schema" : {
-              "$ref" : "#/definitions/response«EPG000101ResponseBody»"
+              "$ref" : "#/definitions/response-EPG000101ResponseBody-"
             }
           }
         }
@@ -225,14 +225,14 @@
           "in" : "body",
           "name" : "paymentInfo",
           "schema" : {
-            "$ref" : "#/definitions/request«EPG030101RequestBody»"
+            "$ref" : "#/definitions/request-EPG030101RequestBody-"
           }
         } ],
         "responses" : {
           "200" : {
             "description" : "OK",
             "schema" : {
-              "$ref" : "#/definitions/response«EPG030101ResponseBody»"
+              "$ref" : "#/definitions/response-EPG030101ResponseBody-"
             }
           }
         }
@@ -251,14 +251,14 @@
           "in" : "body",
           "name" : "getBindedAcct",
           "schema" : {
-            "$ref" : "#/definitions/request«EPG020301RequestBody»"
+            "$ref" : "#/definitions/request-EPG020301RequestBody-"
           }
         } ],
         "responses" : {
           "200" : {
             "description" : "OK",
             "schema" : {
-              "$ref" : "#/definitions/response«EPG020301ResponseBody»"
+              "$ref" : "#/definitions/response-EPG020301ResponseBody-"
             }
           }
         }
@@ -298,7 +298,7 @@
       },
       "type" : "object"
     },
-    "request«EPG030201RequestBody»" : {
+    "request-EPG030201RequestBody-" : {
       "properties" : {
         "body" : {
           "$ref" : "#/definitions/EPG030201RequestBody"
@@ -340,7 +340,7 @@
       },
       "type" : "object"
     },
-    "request«EPG020101RequestBody»" : {
+    "request-EPG020101RequestBody-" : {
       "properties" : {
         "body" : {
           "$ref" : "#/definitions/EPG020101RequestBody"
@@ -387,7 +387,7 @@
       },
       "type" : "object"
     },
-    "response«EPG020201ResponseBody»" : {
+    "response-EPG020201ResponseBody-" : {
       "properties" : {
         "body" : {
           "$ref" : "#/definitions/EPG020201ResponseBody"
@@ -398,7 +398,7 @@
       },
       "type" : "object"
     },
-    "response«EPG030101ResponseBody»" : {
+    "response-EPG030101ResponseBody-" : {
       "properties" : {
         "body" : {
           "$ref" : "#/definitions/EPG030101ResponseBody"
@@ -599,7 +599,7 @@
       },
       "type" : "object"
     },
-    "request«EPG020301RequestBody»" : {
+    "request-EPG020301RequestBody-" : {
       "properties" : {
         "body" : {
           "$ref" : "#/definitions/EPG020301RequestBody"
@@ -610,7 +610,7 @@
       },
       "type" : "object"
     },
-    "response«EPG020101ResponseBody»" : {
+    "response-EPG020101ResponseBody-" : {
       "properties" : {
         "body" : {
           "$ref" : "#/definitions/EPG020101ResponseBody"
@@ -621,7 +621,7 @@
       },
       "type" : "object"
     },
-    "response«EPG030301ResponseBody»" : {
+    "response-EPG030301ResponseBody-" : {
       "properties" : {
         "body" : {
           "$ref" : "#/definitions/EPG030301ResponseBody"
@@ -635,7 +635,7 @@
     "EPG010101ResponseBody" : {
       "type" : "object"
     },
-    "request«EPG030401RequestBody»" : {
+    "request-EPG030401RequestBody-" : {
       "properties" : {
         "body" : {
           "$ref" : "#/definitions/EPG030401RequestBody"
@@ -693,7 +693,7 @@
       },
       "type" : "object"
     },
-    "response«EPG030401ResponseBody»" : {
+    "response-EPG030401ResponseBody-" : {
       "properties" : {
         "body" : {
           "$ref" : "#/definitions/EPG030401ResponseBody"
@@ -710,7 +710,7 @@
     "InputStream" : {
       "type" : "object"
     },
-    "request«EPG020201RequestBody»" : {
+    "request-EPG020201RequestBody-" : {
       "properties" : {
         "body" : {
           "$ref" : "#/definitions/EPG020201RequestBody"
@@ -721,7 +721,7 @@
       },
       "type" : "object"
     },
-    "response«EPG010101ResponseBody»" : {
+    "response-EPG010101ResponseBody-" : {
       "properties" : {
         "body" : {
           "$ref" : "#/definitions/EPG010101ResponseBody"
@@ -854,7 +854,7 @@
       },
       "type" : "object"
     },
-    "request«EPG010101RequestBody»" : {
+    "request-EPG010101RequestBody-" : {
       "properties" : {
         "body" : {
           "$ref" : "#/definitions/EPG010101RequestBody"
@@ -884,7 +884,7 @@
       },
       "type" : "object"
     },
-    "request«EPG040101RequestBody»" : {
+    "request-EPG040101RequestBody-" : {
       "properties" : {
         "body" : {
           "$ref" : "#/definitions/EPG040101RequestBody"
@@ -895,7 +895,7 @@
       },
       "type" : "object"
     },
-    "request«EPG000101RequestBody»" : {
+    "request-EPG000101RequestBody-" : {
       "properties" : {
         "body" : {
           "$ref" : "#/definitions/EPG000101RequestBody"
@@ -906,7 +906,7 @@
       },
       "type" : "object"
     },
-    "response«EPG000101ResponseBody»" : {
+    "response-EPG000101ResponseBody-" : {
       "properties" : {
         "body" : {
           "$ref" : "#/definitions/EPG000101ResponseBody"
@@ -917,7 +917,7 @@
       },
       "type" : "object"
     },
-    "request«EPG030101RequestBody»" : {
+    "request-EPG030101RequestBody-" : {
       "properties" : {
         "body" : {
           "$ref" : "#/definitions/EPG030101RequestBody"
@@ -928,7 +928,7 @@
       },
       "type" : "object"
     },
-    "response«EPG020301ResponseBody»" : {
+    "response-EPG020301ResponseBody-" : {
       "properties" : {
         "body" : {
           "$ref" : "#/definitions/EPG020301ResponseBody"
@@ -939,7 +939,7 @@
       },
       "type" : "object"
     },
-    "response«EPG030201ResponseBody»" : {
+    "response-EPG030201ResponseBody-" : {
       "properties" : {
         "body" : {
           "$ref" : "#/definitions/EPG030201ResponseBody"
@@ -1035,7 +1035,7 @@
       },
       "type" : "object"
     },
-    "request«EPG030301RequestBody»" : {
+    "request-EPG030301RequestBody-" : {
       "properties" : {
         "body" : {
           "$ref" : "#/definitions/EPG030301RequestBody"
