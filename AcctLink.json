@@ -1,6 +1,6 @@
 {
   "swagger" : "2.0",
-  "host" : "61.218.15.236",
+  "host" : "apitest.kgibank.com",
   "basePath" : "/epgw",
   "schemes" : [ "https" ],
   "paths" : {
