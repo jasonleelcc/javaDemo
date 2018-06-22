@@ -1,0 +1,227 @@
+{
+  "swagger" : "2.0",
+  "host" : "172.31.10.3:8065",
+  "basePath" : "/v1/ebill",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/fiscPay" : {
+      "post" : {
+        "description" : "",
+        "operationId" : "fiscPay",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "description" : "",
+          "required" : true,
+          "in" : "body",
+          "name" : "body",
+          "schema" : {
+            "$ref" : "#/definitions/fiscReq"
+          }
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "No Content"
+          }
+        }
+      }
+    },
+    "/regularlyUsedSetting" : {
+      "post" : {
+        "description" : "",
+        "operationId" : "regularlyUsedSetting",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "description" : "",
+          "required" : true,
+          "in" : "body",
+          "name" : "body",
+          "schema" : {
+            "$ref" : "#/definitions/fiscReq"
+          }
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "No Content"
+          }
+        }
+      }
+    },
+    "/fiscQuery" : {
+      "post" : {
+        "description" : "",
+        "operationId" : "fiscQuery",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "description" : "",
+          "required" : true,
+          "in" : "body",
+          "name" : "body",
+          "schema" : {
+            "$ref" : "#/definitions/fiscReq"
+          }
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "No Content"
+          }
+        }
+      }
+    },
+    "/getAvailableServices" : {
+      "post" : {
+        "description" : "",
+        "operationId" : "getAvailableServices",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "description" : "",
+          "required" : true,
+          "in" : "body",
+          "name" : "body",
+          "schema" : {
+            "$ref" : "#/definitions/fiscReq"
+          }
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "No Content"
+          }
+        }
+      }
+    },
+    "/fiscCheck" : {
+      "post" : {
+        "description" : "",
+        "operationId" : "fiscCheck",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "description" : "",
+          "required" : true,
+          "in" : "body",
+          "name" : "body",
+          "schema" : {
+            "$ref" : "#/definitions/fiscReq"
+          }
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "No Content"
+          }
+        }
+      }
+    },
+    "/getPaymentLog" : {
+      "post" : {
+        "description" : "",
+        "operationId" : "getPaymentLog",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "description" : "",
+          "required" : true,
+          "in" : "body",
+          "name" : "body",
+          "schema" : {
+            "$ref" : "#/definitions/fiscReq"
+          }
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "No Content"
+          }
+        }
+      }
+    },
+    "/fiscResend" : {
+      "post" : {
+        "description" : "",
+        "operationId" : "fiscResend",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "description" : "",
+          "required" : true,
+          "in" : "body",
+          "name" : "body",
+          "schema" : {
+            "$ref" : "#/definitions/fiscReq"
+          }
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "No Content"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "fiscReq" : {
+      "properties" : {
+        "uuid" : {
+          "title" : "The Uuid Schema ",
+          "default" : "",
+          "type" : "string"
+        },
+        "txDateTime" : {
+          "title" : "The Txdatetime Schema ",
+          "default" : "",
+          "type" : "string"
+        },
+        "merchant" : {
+          "title" : "The Merchant Schema ",
+          "default" : "",
+          "type" : "string"
+        },
+        "uniqueId" : {
+          "title" : "The Uniqueid Schema ",
+          "type" : "null"
+        },
+        "feeRefId" : {
+          "title" : "The Feerefid Schema ",
+          "default" : "",
+          "type" : "string"
+        },
+        "param" : {
+          "type" : "object"
+        }
+      }
+    },
+    "fiscRes" : {
+      "properties" : {
+        "message" : {
+          "title" : "The message Schema ",
+          "default" : "",
+          "type" : "object"
+        }
+      }
+    }
+  },
+  "securityDefinitions" : {
+    "API Key" : {
+      "type" : "apiKey",
+      "description" : "API Key",
+      "name" : "KeyId",
+      "in" : "header"
+    }
+  },
+  "security" : [ {
+    "API Key" : [ ]
+  } ],
+  "info" : {
+    "title" : "eBill",
+    "description" : "",
+    "version" : "1.0"
+  },
+  "x-axway" : {
+    "corsEnabled" : true,
+    "basePaths" : [ "" ],
+    "serviceType" : "rest",
+    "deprecated" : false,
+    "tags" : { }
+  }
+}
