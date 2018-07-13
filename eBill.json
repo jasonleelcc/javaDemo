@@ -1,6 +1,6 @@
 {
   "swagger" : "2.0",
-  "host" : "172.31.10.3:8065",
+  "host" : "apitest.kgibank.com",
   "basePath" : "/v1/ebill",
   "schemes" : [ "http" ],
   "paths" : {
@@ -201,17 +201,6 @@
       }
     }
   },
-  "securityDefinitions" : {
-    "API Key" : {
-      "type" : "apiKey",
-      "description" : "API Key",
-      "name" : "KeyId",
-      "in" : "header"
-    }
-  },
-  "security" : [ {
-    "API Key" : [ ]
-  } ],
   "info" : {
     "title" : "eBill",
     "description" : "採用API識別碼(API Key)與密鑰(API Secret)加上電文簽章的方式產生出 HTTP Header\n\"Authorization: AWS \" + APIKeyId + \":\" + Signature\n\nAPI識別碼夾帶於Header中，用於識別API的使用者，Signature則透過Secret進行Hash確保電文沒有被串改及身份沒有被冒用，Signature的計算方式請參考以下，利用API Secret對特定欄位做HMAC-SHA1，針對不存在的欄位填入空字串：\nbase64(hmac-sha1(VERB + \"\\n\" \n + CONTENT-MD5 + \"\\n\" \n + CONTENT-TYPE + \"\\n\" \n + DATE + \"\\n\" \n + CanonicalizedAmzHeaders + \"\\n\" \n + CanonicalizedResource))\n\n其中CanonicalizedAmzHeaders為所有X-Amz開頭的欄位，一般為AWS專用，可跳過且不需要保留換行符號(\\n)。\n\n例如：\n\nGET /res HTTP/1.1\nHost: www.kgi.com\nDate: Tue, 27 Mar 2007 19:44:46 +0000\n\n需簽章字串則為GET\\n\\n\\nTue, 27 Mar 2007 19:44:46 +0000\\n/res\n\nPOST /res HTTP/1.1\nHost: www.kgi.com\nContent-MD5: 4gJE4saaMU4BqNR0kLY+lw==\nDate: Tue, 27 Mar 2007 19:44:46 +0000\nContent-Type: application/json\nContent-Length: 231\n\n{“token”: “sample_token”}\n\n需簽章字串則為POST\\n4gJE4saaMU4BqNR0kLY+lw==\\napplication/json\\nTue, 27 Mar 2007 19:44:46 +0000\\n/res\n",
